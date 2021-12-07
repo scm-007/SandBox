@@ -9,7 +9,9 @@ public class PlatformGenerator : MonoBehaviour
     [SerializeField] GameObject lastPlatform;
 
     [SerializeField] List<Vector2> transPosY = new List<Vector2>();
-    Vector2 biggestY = new Vector2();
+    [SerializeField] Vector2 biggestY = new Vector2();
+
+    public Platform thisPlatform;
 
     void Start()
     {
@@ -32,27 +34,25 @@ public class PlatformGenerator : MonoBehaviour
 
         if (spawnPosition.y < 0)
         {
-            spawnPosition *= -1;
+            spawnPosition.y *= -1;
         }
+
         Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
         AddPosToList();
     }
     void AddPosToList()
     {
-        transPosY.Add(gameObject.transform.position);
+        transPosY.Add(thisPlatform.transform.position);
+
     }
     void CheckLastPlatform()
     {
         for (int i = 0; i < transPosY.Count; i++)
         {
-            //if (transPosY[i] > biggestY)
-            //{
-                
-            //}
-        }
-        if (gameObject.transform.position.x > lastPlatform.transform.position.x)
-        {
-            lastPlatform = gameObject;
+            if (transPosY[i].y > biggestY.y)
+            {
+                biggestY.y = transPosY[i].y;
+            }
         }
     }
 }
