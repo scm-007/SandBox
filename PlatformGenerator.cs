@@ -52,6 +52,7 @@ public class PlatformGenerator : MonoBehaviour
             if (transPosY[i].y > biggestY.y)
             {
                 biggestY.y = transPosY[i].y;
+                biggestY.y = transPosY[i].y;
             }
         }
     }
