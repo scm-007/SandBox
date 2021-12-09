@@ -20,7 +20,7 @@ public class PlatformGenerator : MonoBehaviour
         {
             RandomSpawnObject(5);
             RandomSpawnObject(5);
-        }
+        }g
     }
     void Update()
     {
